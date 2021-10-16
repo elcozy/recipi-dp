@@ -29,6 +29,8 @@ const AddRecipe = () => {
     };
     itemsRef.push(item);
     setData(mainData);
+    window.location.href = "/";
+    alert("Recipe submitted successfully");
   };
 
   const addRecipeToArray = () => {
@@ -40,17 +42,23 @@ const AddRecipe = () => {
     });
   };
   const deleteRecipeToArray = (i, a) => {
-    console.log(a, "has been deleted to the array");
-    const deleteData = data.listOfIngredients.splice(i + 1);
-
+    // console.log(a, "has been deleted to the array");
+    const IngriedientsArray = data.listOfIngredients;
+    function removeElement(array, elem) {
+      var index = array.indexOf(elem);
+      if (index > -1) {
+        array.splice(index, 1);
+      }
+    }
+    removeElement(IngriedientsArray, a);
     setData({
       ...data,
-      listOfIngredients: deleteData,
+      listOfIngredients: IngriedientsArray,
     });
   };
 
   const addIngredToArray = () => {
-    console.log(data.ingredient, "has been added to the array");
+    // console.log(data.prepareStep, "has been added to the array");
     setData({
       ...data,
       preparationSteps: [...data.preparationSteps, data.prepareStep],
@@ -58,12 +66,21 @@ const AddRecipe = () => {
     });
   };
   const deleteIngredToArray = (i, a) => {
-    console.log(a, "has been deleted to the array");
-    const deleteData = data.preparationSteps.splice(i + 1);
+    // console.log(a, "has been deleted to the array");
+
+    const prepArray = data.listOfIngredients;
+    function removeElement(array, elem) {
+      var index = array.indexOf(elem);
+      if (index > -1) {
+        array.splice(index, 1);
+      }
+    }
+
+    removeElement(prepArray, a);
 
     setData({
       ...data,
-      preparationSteps: deleteData,
+      preparationSteps: prepArray,
     });
   };
   const {
@@ -77,12 +94,11 @@ const AddRecipe = () => {
   const buttonActive =
     !!recipeName && listOfIngredients.length > 0 && preparationSteps.length > 0;
 
-  console.log(buttonActive, listOfIngredients.length);
   return (
     <div>
       <button
         disabled={!buttonActive}
-        className="btn btn-primary"
+        className="btn btn-primary mb-2"
         onClick={handleSubmit}
       >
         Save Recipe
@@ -141,7 +157,6 @@ const AddRecipe = () => {
           </div>
         )}
         <hr />
-        gg
       </div>
 
       <div className="mb-3">

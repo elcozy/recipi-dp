@@ -87,7 +87,7 @@ const ListRepices = () => {
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="dps_modal"
         aria-hidden="true"
       >
