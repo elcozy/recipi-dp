@@ -11,6 +11,44 @@ html {
     font-family: "Overpass", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin-top: 3.5rem;
+    min-height: 100vh;
+  }
+}
+main{
+  min-height: 100vh;
+.side_nav{
+  min-height: 100vh;
+  height: 100%;
+}}
+.app_container{
+  display: flex;
+  .content{
+    flex-grow: 1
+    ; padding: 2rem;
+  }
+}
+
+#ingredientsResult{
+  .results{
+display: flex;
+justify-content: space-between;
+  }
+}
+.ingredientsResult{
+  display: flex;
+  flex-wrap: wrap;
+  span{
+    color: #fff;
+    background-color: #ffc107;
+    padding: .25rem .5rem;
+    font-size: .7rem;
+    margin: .1rem;
+    text-transform: capitalize;
+  }
+}
+.ingredient-container{
+  display: flex;
+  button{
+    margin-left: .3rem;
   }
 }
