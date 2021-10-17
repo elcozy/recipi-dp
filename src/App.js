@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import "./app.scss";
 import AddRecipe from "./components/AddRecipe";
@@ -13,9 +13,13 @@ const App = () => {
     const isMobile = resolution <= 768;
     setIsDesktop(!isMobile);
   };
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowResize(), false);
+
+  useLayoutEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    handleWindowResize();
+    return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
+
   return (
     <main className="app_container">
       <div>
