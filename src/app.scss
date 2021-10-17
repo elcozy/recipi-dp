@@ -48,10 +48,14 @@ main {
     margin: 0.1rem;
     text-transform: capitalize;
   }
+  margin-bottom: 0.52rem;
 }
 .ingredient-container {
   display: flex;
   button {
     margin-left: 0.3rem;
   }
+}
+.card-title{
+  border-bottom: 1.3px solid #dee2e6;
 }

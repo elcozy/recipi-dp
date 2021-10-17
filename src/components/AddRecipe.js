@@ -96,13 +96,6 @@ const AddRecipe = () => {
 
   return (
     <div>
-      <button
-        disabled={!buttonActive}
-        className="btn btn-primary mb-2"
-        onClick={handleSubmit}
-      >
-        Save Recipe
-      </button>
       <div className="mb-3">
         <label htmlFor="recipeName" className="form-label">
           Recipe Name
@@ -117,27 +110,11 @@ const AddRecipe = () => {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="listOfIngredients" className="form-label">
+        <hr />
+
+        <label htmlFor="listOfIngredients" className="form-label fw-bold">
           List of Ingredients
         </label>
-        <div className="ingredient-container">
-          <input
-            type="text"
-            className="form-control"
-            name="ingredient"
-            placeholder="List of Ingriedients"
-            onChange={(e) => handleChange(e)}
-            value={ingredient}
-          />
-          <button
-            id="ingredientButton"
-            className="btn btn-primary"
-            disabled={!data.ingredient}
-            onClick={addRecipeToArray}
-          >
-            Add
-          </button>
-        </div>
         {listOfIngredients.length > 0 && (
           <div id="ingredientsResult">
             Ingredients:
@@ -156,13 +133,48 @@ const AddRecipe = () => {
             ))}
           </div>
         )}
-        <hr />
+        <div className="ingredient-container">
+          <input
+            type="text"
+            className="form-control"
+            name="ingredient"
+            placeholder="List of Ingriedients"
+            onChange={(e) => handleChange(e)}
+            value={ingredient}
+          />
+          <button
+            id="ingredientButton"
+            className="btn btn-primary"
+            disabled={!data.ingredient}
+            onClick={addRecipeToArray}
+          >
+            Add
+          </button>
+        </div>
       </div>
 
       <div className="mb-3">
-        <label htmlFor="preparationSteps" className="form-label">
+        <hr />
+
+        <label htmlFor="preparationSteps" className="form-label fw-bold">
           Preparation Steps
         </label>
+
+        {preparationSteps.length > 0 && (
+          <ul id="ingredientsResult">
+            {preparationSteps.map((a, i) => (
+              <div className="results" key={i}>
+                <li>{a}</li>
+                <button
+                  className="btn btn-danger btn-sm my-1"
+                  onClick={() => deleteIngredToArray(i, a)}
+                >
+                  x
+                </button>
+              </div>
+            ))}
+          </ul>
+        )}
         <div className="ingredient-container">
           <input
             type="text"
@@ -181,21 +193,6 @@ const AddRecipe = () => {
             Add
           </button>
         </div>
-        {preparationSteps.length > 0 && (
-          <div id="ingredientsResult">
-            {preparationSteps.map((a, i) => (
-              <div className="results" key={i}>
-                <span>-{a}</span>
-                <button
-                  className="btn btn-danger btn-sm my-1"
-                  onClick={() => deleteIngredToArray(i, a)}
-                >
-                  x
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
       <button
         disabled={!buttonActive}

@@ -40,32 +40,36 @@ const ListRepices = () => {
               <span className="visually-hidden">Loading...</span>
             </div>
           </div>
-        ) : (
+        ) : savedData.length > 0 ? (
           <div className="row">
             {savedData &&
               savedData.map((item, i) => (
                 <div className="col-sm-6 my-2" key={item.id}>
                   <div className="card h-100">
                     <div className="card-body">
-                      <h5 className="card-title">{item.recipeName}</h5>
+                      <h3 className="card-title">{item.recipeName}</h3>
+
+                      <h5>List of Ingredients</h5>
                       {savedData[i].listOfIngredients && (
                         <div className="ingredientsResult">
-                          {savedData[i].listOfIngredients.map((a, i) => (
-                            <span key={i}>{a} </span>
-                          ))}
+                          {savedData[i].listOfIngredients
+                            .slice(0, 4)
+                            .map((a, i) => (
+                              <span key={i}>{a} </span>
+                            ))}
                         </div>
                       )}
-                      {item.preparationSteps && (
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="preparationSteps"
-                          placeholder="Preparation Steps"
-                          disabled
-                          value={item.preparationSteps}
-                        >
-                          {/* {item.preparationSteps} */}
-                        </input>
+                      <h5>Preparation Steps</h5>
+                      {savedData[i].preparationSteps && (
+                        <ul className="preparationSteps">
+                          {savedData[i].preparationSteps
+                            .slice(0, 2)
+                            .map((item, i) => (
+                              <li className="fs-6" key={i}>
+                                {item}
+                              </li>
+                            ))}
+                        </ul>
                       )}
 
                       <button
@@ -75,13 +79,15 @@ const ListRepices = () => {
                         data-bs-target="#exampleModal"
                         onClick={() => modalData(item)}
                       >
-                        View {item.recipeName} Recipe
+                        View Recipe
                       </button>
                     </div>
                   </div>
                 </div>
               ))}
           </div>
+        ) : (
+          <p>No recipe available</p>
         )}
       </div>
       <div
@@ -110,16 +116,26 @@ const ListRepices = () => {
             <div className="modal-body">
               <h5 className="fw-bold">List of Ingredients</h5>
               {modalContent.listOfIngredients && (
-                <div id="ingredientsResult">
+                <ul id="ingredientsResult">
                   {modalContent.listOfIngredients.map((a, i) => (
-                    <p className="fs-6 text-capitalize" key={i}>
+                    <li className="fs-6 text-capitalize" key={i}>
                       {a}
-                    </p>
+                    </li>
                   ))}
-                </div>
+                </ul>
               )}
               <h5 className="fw-bold">Preparation Steps</h5>
-              <p>{modalContent.preparationSteps}</p>
+              <ul>
+                {modalContent.preparationSteps && (
+                  <div id="ingredientsResult">
+                    {modalContent.preparationSteps.map((a, i) => (
+                      <li className="fs-6" key={i}>
+                        {a}
+                      </li>
+                    ))}
+                  </div>
+                )}
+              </ul>
             </div>
             <div className="modal-footer">
               <button
