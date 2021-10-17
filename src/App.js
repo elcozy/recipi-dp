@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import "./app.scss";
 import AddRecipe from "./components/AddRecipe";
