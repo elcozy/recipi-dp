@@ -14,41 +14,44 @@ html {
     min-height: 100vh;
   }
 }
-main{
+main {
   min-height: 100vh;
-.side_nav{
-  min-height: 100vh;
-  height: 100%;
-}}
-.app_container{
-  display: flex;
-  .content{
-    flex-grow: 1
-    ; padding: 2rem;
+  .side_nav {
+    min-height: 100vh;
+    height: 100%;
+  }
+}
+.app_container {
+  @media (min-width: 768px) {
+    display: flex;
+  }
+  .content {
+    flex-grow: 1;
+    padding: 2rem;
   }
 }
 
-#ingredientsResult{
-  .results{
-display: flex;
-justify-content: space-between;
+#ingredientsResult {
+  .results {
+    display: flex;
+    justify-content: space-between;
   }
 }
-.ingredientsResult{
+.ingredientsResult {
   display: flex;
   flex-wrap: wrap;
-  span{
+  span {
     color: #fff;
     background-color: #ffc107;
-    padding: .25rem .5rem;
-    font-size: .7rem;
-    margin: .1rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    margin: 0.1rem;
     text-transform: capitalize;
   }
 }
-.ingredient-container{
+.ingredient-container {
   display: flex;
-  button{
-    margin-left: .3rem;
+  button {
+    margin-left: 0.3rem;
   }
 }
