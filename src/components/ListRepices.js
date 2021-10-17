@@ -28,7 +28,6 @@ const ListRepices = () => {
 
   const modalData = (e) => {
     setModalContent(e);
-    console.log(e);
   };
 
   return (
@@ -126,15 +125,12 @@ const ListRepices = () => {
               )}
               <h5 className="fw-bold">Preparation Steps</h5>
               <ul>
-                {modalContent.preparationSteps && (
-                  <div id="ingredientsResult">
-                    {modalContent.preparationSteps.map((a, i) => (
-                      <li className="fs-6" key={i}>
-                        {a}
-                      </li>
-                    ))}
-                  </div>
-                )}
+                {modalContent.preparationSteps &&
+                  modalContent.preparationSteps.map((a, i) => (
+                    <li className="fs-6" key={i}>
+                      {a}
+                    </li>
+                  ))}
               </ul>
             </div>
             <div className="modal-footer">
